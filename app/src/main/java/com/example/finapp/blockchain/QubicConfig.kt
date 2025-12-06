@@ -6,11 +6,17 @@ package com.example.finapp.blockchain
  */
 object QubicConfig {
     // Network Configuration
-    const val QUBIC_TESTNET_RPC = "https://testapi.qubic.org"
-    const val QUBIC_MAINNET_RPC = "https://mainnet.qubic.org"
+    // Option 1: Qubetics Testnet (EVM-Compatible) - RECOMMENDED FOR HACKATHON
+    const val QUBETICS_TESTNET_RPC = "https://rpc-testnet.qubetics.work"
+    const val QUBETICS_TESTNET_CHAIN_ID = 9029
     
-    // Current network (switch for production)
-    const val CURRENT_NETWORK = QUBIC_TESTNET_RPC
+    // Option 2: Native Qubic Network (Custom Architecture - Advanced)
+    const val QUBIC_TESTNET_RPC = "https://testnet-rpc.qubicdev.com"
+    const val QUBIC_MAINNET_RPC = "https://rpc.qubic.org"
+    
+    // Current network (Using Qubetics for EVM compatibility)
+    const val CURRENT_NETWORK = QUBETICS_TESTNET_RPC
+    const val CHAIN_ID = QUBETICS_TESTNET_CHAIN_ID
     const val IS_TESTNET = true
     
     // Smart Contract Addresses (Deploy and update these)
