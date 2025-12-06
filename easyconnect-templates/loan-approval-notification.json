@@ -1,0 +1,31 @@
+{
+  "name": "Loan Approval Notification",
+  "description": "Send Discord notification when loan is approved",
+  "version": "1.0",
+  "trigger": {
+    "type": "blockchain_event",
+    "contract": "LENDING_POOL_ADDRESS",
+    "event": "LoanApproved",
+    "network": "qubic-testnet"
+  },
+  "actions": [
+    {
+      "type": "discord_webhook",
+      "webhook_url": "YOUR_DISCORD_WEBHOOK_URL",
+      "message": {
+        "embeds": [{
+          "title": "🎉 Loan Approved!",
+          "description": "Your loan application has been approved",
+          "color": 3066993,
+          "fields": [
+            { "name": "Loan ID", "value": "${event.loanId}", "inline": true },
+            { "name": "Amount", "value": "${event.amount} QUBIC", "inline": true },
+            { "name": "Status", "value": "✅ Approved", "inline": true }
+          ],
+          "timestamp": "${event.timestamp}"
+        }]
+      }
+    }
+  ]
+}
+

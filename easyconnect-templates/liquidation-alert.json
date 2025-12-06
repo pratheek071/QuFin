@@ -1,0 +1,45 @@
+{
+  "name": "Liquidation Risk Alert",
+  "description": "Multi-channel urgent alerts for loans at risk",
+  "version": "1.0",
+  "trigger": {
+    "type": "blockchain_event",
+    "contract": "LENDING_POOL_ADDRESS",
+    "event": "HealthFactorAlert",
+    "network": "qubic-testnet",
+    "filter": {
+      "healthFactor": { "lt": 1.3 }
+    }
+  },
+  "actions": [
+    {
+      "type": "email",
+      "to": "${event.borrowerEmail}",
+      "subject": "⚠️ URGENT: Your Qubic Finance Loan Needs Attention",
+      "html": "<h2>Liquidation Warning</h2><p>Your loan #${event.loanId} is approaching liquidation threshold.</p><p><strong>Current Health Factor:</strong> ${event.healthFactor}</p><p><strong>Action Required:</strong> Add more collateral immediately</p>"
+    },
+    {
+      "type": "discord_webhook",
+      "webhook_url": "YOUR_DISCORD_WEBHOOK_URL",
+      "message": {
+        "embeds": [{
+          "title": "⚠️ Liquidation Risk Alert",
+          "description": "Loan #${event.loanId} needs immediate attention",
+          "color": 15158332,
+          "fields": [
+            { "name": "Health Factor", "value": "${event.healthFactor}", "inline": true },
+            { "name": "Borrower", "value": "${event.borrower}", "inline": true },
+            { "name": "Risk Level", "value": "${event.criticalRisk ? 'CRITICAL' : 'WARNING'}", "inline": true }
+          ],
+          "timestamp": "${event.timestamp}"
+        }]
+      }
+    },
+    {
+      "type": "sms",
+      "to": "${event.borrowerPhone}",
+      "message": "URGENT: Qubic Finance loan #${event.loanId} at risk. Health factor: ${event.healthFactor}. Add collateral now!"
+    }
+  ]
+}
+

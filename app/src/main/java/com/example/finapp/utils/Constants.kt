@@ -19,7 +19,7 @@ object Constants {
     const val NOTIFICATION_WORKER_NAME = "daily_payment_reminder"
     
     // Admin UPI ID (for receiving payments)
-    const val ADMIN_UPI_ID = "6364475759@ybl"  // Replace with actual UPI ID
-    const val PAYMENT_RECEIVER_NAME = "FinApp"
+    const val ADMIN_UPI_ID = "8762924399-2@ybl"  // Replace with actual UPI ID
+    const val PAYMENT_RECEIVER_NAME = "LendFlow"
 }
 

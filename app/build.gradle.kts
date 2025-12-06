@@ -75,6 +75,17 @@ dependencies {
     // Work Manager
     implementation(libs.work.runtime)
     
+    // Blockchain & Web3
+    implementation(libs.web3j.core)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+    implementation(libs.gson)
+    implementation(libs.bouncycastle)
+    
+    // QR Code Scanner (for wallet addresses)
+    implementation(libs.zxing.core)
+    implementation(libs.zxing.android)
+    
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

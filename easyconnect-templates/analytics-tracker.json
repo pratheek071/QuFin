@@ -1,0 +1,41 @@
+{
+  "name": "Analytics Tracker (Google Sheets)",
+  "description": "Track all loan events in Google Sheets",
+  "version": "1.0",
+  "trigger": {
+    "type": "blockchain_event_group",
+    "contract": "LENDING_POOL_ADDRESS",
+    "events": ["LoanCreatedDetailed", "PaymentMadeDetailed", "LoanCompleted", "LoanLiquidated"],
+    "network": "qubic-testnet"
+  },
+  "actions": [
+    {
+      "type": "google_sheets_append",
+      "spreadsheet_id": "YOUR_SPREADSHEET_ID",
+      "sheet_name": "Loan Events",
+      "values": [
+        "${event.timestamp}",
+        "${event.eventName}",
+        "${event.loanId}",
+        "${event.borrower}",
+        "${event.amount || 0}",
+        "${event.healthFactor || 'N/A'}",
+        "${event.status || 'N/A'}"
+      ]
+    },
+    {
+      "type": "google_sheets_update",
+      "spreadsheet_id": "YOUR_SPREADSHEET_ID",
+      "sheet_name": "Summary",
+      "range": "B2:B6",
+      "values": [
+        ["${aggregate.totalLoans}"],
+        ["${aggregate.totalBorrowed}"],
+        ["${aggregate.activeLoans}"],
+        ["${aggregate.totalRepaid}"],
+        ["${aggregate.averageHealthFactor}"]
+      ]
+    }
+  ]
+}
+

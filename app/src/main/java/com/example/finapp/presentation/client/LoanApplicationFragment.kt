@@ -33,7 +33,7 @@ class LoanApplicationFragment : Fragment() {
     private var selectedLoanType: LoanType = LoanType.EDUCATION
     
     companion object {
-        private const val MIN_LOAN_AMOUNT = 10000.0
+        private const val MIN_LOAN_AMOUNT = 1000.0
         private const val MAX_LOAN_AMOUNT = 20000000.0
         private const val MIN_DURATION_YEARS = 2
         private const val MAX_DURATION_YEARS = 25

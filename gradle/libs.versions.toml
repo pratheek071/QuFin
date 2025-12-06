@@ -16,6 +16,12 @@ coroutines = "1.9.0"
 hilt = "2.51.1"
 workManager = "2.10.0"
 googleServices = "4.4.2"
+# Blockchain & Web3
+web3j = "4.10.3"
+okhttp = "4.12.0"
+gson = "2.10.1"
+bouncycastle = "1.70"
+zxing = "3.5.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -51,6 +57,15 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.r
 
 # Work Manager
 work-runtime = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "workManager" }
+
+# Blockchain & Web3
+web3j-core = { group = "org.web3j", name = "core", version.ref = "web3j" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+bouncycastle = { group = "org.bouncycastle", name = "bcprov-jdk15on", version.ref = "bouncycastle" }
+zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
+zxing-android = { group = "com.journeyapps", name = "zxing-android-embedded", version = "4.3.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
